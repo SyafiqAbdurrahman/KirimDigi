@@ -571,7 +571,7 @@ function _pauseAudio(){
 							<span class="elementor-grid-item">
 					<a class="elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-repeater-item-0f94d9a" href="https://instagram.com/instagram" target="_blank">
 						<span class="elementor-screen-only">Instagram</span>
-						<i class="fab fa-instagram"></i>					</a>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>					</a>
 				</span>
 					</div>
 						</div>
@@ -1099,89 +1099,178 @@ continually, You.</p>				</div>
 				</div>
 				<div class="elementor-element elementor-element-7b417614 elementor-widget elementor-widget-wds_rsvp" data-id="7b417614" data-element_type="widget" data-settings="{&quot;show_avatar&quot;:&quot;no&quot;}" data-widget_type="wds_rsvp.default">
 				<div class="elementor-widget-container">
-					<div class="saic-wrapper"><div class="saic-wrapper saic-default saic-border saic-full " style="overflow: hidden;">
-
-	<div class="saic-wrap-link">
-
-		<a href="index-1.htm?post_id=4689&#038;comments=19&#038;get=500&#038;order=DESC" id="saic-link-4689" class="saic-link saic-icon-link saic-icon-link-true auto-load-true">
-			<i class="saico-comment"></i>
-			<span>19</span>
-			Ucapan		</a>
-
-	</div>
-
-	<div id="saic-wrap-comment-4689" class="saic-wrap-comments" style="display: none;" data-id="4689">
-
-		<div id="saic-wrap-form-4689" class="saic-wrap-form saic-clearfix">
-
-			<div id="saic-container-form-4689" class="saic-container-form">
-
-				<div id="respond-4689" class="respond saic-clearfix">
-
-					<form action="" method="POST" id="commentform-4689">
-
-						
-							<p class="comment-form-author saic-field-1">
-								<input type="text" name="author" id="author" class="saic-input" aria-required="true" placeholder="Nama Anda" value="Nama Tamu">
-								<span class="saic-required">*</span>
-								<span class="saic-error-info saic-error-info-name">Masukan nama anda</span>
-							</p>
-
-						
-						
-							<div class="saic-wrap-attendance">
-								<select name="attendance" id="attendance" class="saic-select">
-									<option value="" selected="" disabled>Konfirmasi Kehadiran</option>
-									<option value="present">Hadir</option>
-									<option value="notpresent">Tidak Hadir</option>
-																			<option value="notsure">Masih Ragu</option>
-																	</select>
-								<span class="saic-required">*</span>
-								<span class="saic-error-info saic-error-info-attendance">Pilih konfirmasi kehadiran</span>
+					<style>
+						.rsvp-wishes-container { padding: 20px 10px; border-radius: 10px; margin-top: 20px; color: #fff; text-align: left; }
+						.rsvp-form .form-group { margin-bottom: 20px; }
+						.rsvp-form input[type="text"], .rsvp-form select, .rsvp-form textarea { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #E0C3A8; background-color: rgba(255, 255, 255, 0.1); color: #fff; font-family: 'Poppins', sans-serif; box-sizing: border-box; font-size: 14px; }
+						.rsvp-form input[type="text"]:focus, .rsvp-form select:focus, .rsvp-form textarea:focus { outline: none; border-color: #fff; box-shadow: 0 0 5px rgba(224, 195, 168, 0.5); }
+						.rsvp-form input[type="text"]::placeholder, .rsvp-form textarea::placeholder { color: #b3b3b3; }
+						.rsvp-form select { appearance: none; -webkit-appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23E0C3A8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 15px top 50%; background-size: .75em auto; }
+						.rsvp-form select option { background: #3a2d24; color: #fff; }
+						.rsvp-button { background-color: #E0C3A8; color: #3a2d24; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 16px; display: block; width: 100%; margin-top: 10px; transition: background-color 0.3s; }
+						.rsvp-button:hover { background-color: #d4b59a; }
+						.wishes-display { margin-top: 40px; border-top: 1px solid rgba(224, 195, 168, 0.3); padding-top: 30px; }
+						.wishes-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+						.wishes-header h3 { margin: 0; font-family: 'Cinzel', serif; color: #E0C3A8; font-size: 22px; }
+						.toggle-button { background-color: transparent; border: 1px solid #E0C3A8; color: #E0C3A8; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-family: 'Poppins', sans-serif; transition: background-color 0.3s, color 0.3s; }
+						.toggle-button:hover { background-color: #E0C3A8; color: #3a2d24; }
+						.wishes-list { list-style: none; padding: 0; margin: 0; max-height: 400px; overflow-y: auto; transition: all 0.3s ease-in-out; }
+						.wishes-list li { background-color: rgba(0, 0, 0, 0.2); padding: 15px; border-radius: 8px; margin-bottom: 10px; border-left: 3px solid #E0C3A8; }
+						.wish-author { font-weight: bold; font-family: 'Poppins', sans-serif; color: #E0C3A8; }
+						.wish-meta { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #c5c5c5; margin-top: 5px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid rgba(224, 195, 168, 0.2); }
+						.wish-attendance { font-weight: bold; padding: 3px 10px; border-radius: 12px; font-size: 11px; text-transform: capitalize; }
+						.wish-attendance.hadir { background-color: rgba(40, 167, 69, 0.8); color: white; }
+						.wish-attendance.ragu { background-color: rgba(255, 193, 7, 0.8); color: white; }
+						.wish-timestamp { font-style: italic; }
+						.wish-text { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #f0f0f0; white-space: pre-wrap; word-wrap: break-word; }
+						.wishes-list::-webkit-scrollbar { width: 5px; }
+						.wishes-list::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
+						.wishes-list::-webkit-scrollbar-thumb { background: #E0C3A8; border-radius: 10px; }
+						.wishes-list::-webkit-scrollbar-thumb:hover { background: #d4b59a; }
+					</style>
+					<div class="rsvp-wishes-container">
+						<form id="rsvp-form" class="rsvp-form">
+							<div class="form-group">
+								<input type="text" id="guest-name" name="guest-name" placeholder="Nama Anda" required>
 							</div>
-
+							<div class="form-group">
+								<select id="attendance-status" name="attendance-status" required>
+									<option value="" disabled selected>Konfirmasi Kehadiran</option>
+									<option value="hadir">Hadir</option>
+									<option value="tidak-hadir">Tidak Hadir</option>
+									<option value="ragu">Masih Ragu</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<textarea id="wishes-text" name="wishes-text" placeholder="Tuliskan doa dan ucapan terbaik Anda untuk kedua mempelai..." rows="4" required></textarea>
+							</div>
+							<button type="submit" class="rsvp-button">Kirim Ucapan</button>
+						</form>
+						<div class="wishes-display">
+							<div class="wishes-header">
+								<h3><span id="wishes-count">0</span> Ucapan</h3>
+								<button id="toggle-wishes" class="toggle-button">Tampilkan</button>
+							</div>
+							<ul id="wishes-list" class="wishes-list" style="display: none;">
+							</ul>
+						</div>
+					</div>
+					<script>
+					document.addEventListener('DOMContentLoaded', function() {
+						const rsvpForm = document.getElementById('rsvp-form');
+						const wishesList = document.getElementById('wishes-list');
+						const wishesCount = document.getElementById('wishes-count');
+						const toggleButton = document.getElementById('toggle-wishes');
 						
-						<div class="saic-wrap-guest" style="display: none;">
-							<select name="guest" id="guest" class="saic-select">
-								<option value="" selected="" disabled>Jumlah Tamu</option>
-								<option value="1">1 orang</option><option value="2">2 orang</option><option value="3">3 orang</option><option value="4">4 orang</option><option value="5">5 orang</option>							</select>
-							<span class="saic-required">*</span>
-							<span class="saic-error-info saic-error-info-guest">Pilih jumlah tamu</span>
-						</div>
+						function formatTimestamp(date) {
+							const options = { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+							return new Intl.DateTimeFormat('id-ID', options).format(date).replace(/\./g, ':');
+						}
 
-						<div class="saic-wrap-textarea">
-							<textarea name="comment" id="saic-textarea-4689" class="waci_comment saic-textarea autosize-textarea" aria-required="true" placeholder="Tulis ucapan" rows="1"></textarea>
-							<span class="saic-required">*</span>
-							<span class="saic-error-info saic-error-info-text">Ucapan minimal 2 karakter</span>
-						</div>
+						const wishesData = [
+							{ name: 'Budi & Keluarga', text: 'Selamat menempuh hidup baru Sofwa & Syafiq! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Aamiin.', attendance: 'hadir', timestamp: new Date('2024-07-20T10:00:00') },
+							{ name: 'Ani', text: 'Happy wedding! Bahagia selalu untuk kalian berdua. Semoga langgeng sampai kakek nenek.', attendance: 'ragu', timestamp: new Date('2024-07-21T11:30:00') },
+							{ name: 'Doni', text: 'Mohon maaf tidak bisa hadir, semoga acaranya lancar.', attendance: 'tidak-hadir', timestamp: new Date('2024-07-21T15:00:00') },
+							{ name: 'Citra', text: 'Selamat ya, semoga cepat diberi momongan yang lucu-lucu. Aamiin ya Rabbal Alamin.', attendance: 'hadir', timestamp: new Date('2024-07-22T09:15:00') }
+						];
 
-						<div class="saic-wrap-submit saic-clearfix">
-							<p class="form-submit">
-                                <input type='hidden' name='comment_post_ID' value='4689' id='comment_post_ID'>
-<input type='hidden' name='comment_parent' id='comment_parent' value='0'>
-								<input type="hidden" name="commentpress" value="true">
-								<input type="submit" id="submit-4689" value="Kirim">
-							</p>
-						</div>
+						function addWishToList(wish) {
+							const newWishLi = document.createElement('li');
+							
+							const authorDiv = document.createElement('div');
+							authorDiv.className = 'wish-author';
+							authorDiv.textContent = wish.name;
 
-					</form>
+							const metaDiv = document.createElement('div');
+							metaDiv.className = 'wish-meta';
 
+							const attendanceSpan = document.createElement('span');
+							attendanceSpan.className = `wish-attendance ${wish.attendance}`;
+							let attendanceText = wish.attendance;
+							if (attendanceText === 'ragu') {
+								attendanceText = 'Masih Ragu';
+							}
+							attendanceSpan.textContent = attendanceText;
+							
+							const timestampSpan = document.createElement('span');
+							timestampSpan.className = 'wish-timestamp';
+							timestampSpan.textContent = formatTimestamp(wish.timestamp);
+
+							metaDiv.appendChild(attendanceSpan);
+							metaDiv.appendChild(timestampSpan);
+
+							const textDiv = document.createElement('div');
+							textDiv.className = 'wish-text';
+							textDiv.textContent = wish.text;
+
+							newWishLi.appendChild(authorDiv);
+							newWishLi.appendChild(metaDiv);
+							newWishLi.appendChild(textDiv);
+
+							wishesList.prepend(newWishLi);
+						}
+
+						function updateWishesCount() {
+							 const count = wishesData.filter(w => w.attendance !== 'tidak-hadir').length;
+							 wishesCount.textContent = count;
+						}
+
+						// Initial population of the list
+						wishesData.forEach(wish => {
+							if (wish.attendance !== 'tidak-hadir') {
+								addWishToList(wish);
+							}
+						});
+						updateWishesCount();
+
+						rsvpForm.addEventListener('submit', function(e) {
+							e.preventDefault();
+							const nameInput = document.getElementById('guest-name');
+							const attendanceInput = document.getElementById('attendance-status');
+							const wishesInput = document.getElementById('wishes-text');
+
+							if (nameInput.value.trim() === '' || attendanceInput.value === '' || wishesInput.value.trim() === '') {
+								alert('Mohon lengkapi semua kolom.');
+								return;
+							}
+
+							const newWish = {
+								name: nameInput.value,
+								text: wishesInput.value,
+								attendance: attendanceInput.value,
+								timestamp: new Date()
+							};
+
+							wishesData.push(newWish);
+							
+							if (newWish.attendance !== 'tidak-hadir') {
+								addWishToList(newWish);
+								alert('Terima kasih! Ucapan dan doa Anda telah kami terima.');
+							} else {
+								alert('Terima kasih atas konfirmasi kehadiran Anda.');
+							}
+							
+							updateWishesCount();
+							rsvpForm.reset();
+
+							if (wishesList.style.display === 'none' && newWish.attendance !== 'tidak-hadir') {
+								wishesList.style.display = 'block';
+								toggleButton.textContent = 'Sembunyikan';
+							}
+							
+							if (newWish.attendance !== 'tidak-hadir') {
+								wishesList.scrollTop = 0;
+							}
+						});
+
+						toggleButton.addEventListener('click', function() {
+							const isHidden = wishesList.style.display === 'none';
+							wishesList.style.display = isHidden ? 'block' : 'none';
+							toggleButton.textContent = isHidden ? 'Sembunyikan' : 'Tampilkan';
+						});
+					});
+					</script>
 				</div>
-
-			</div>
-
-		</div>
-
-		<div id="saic-comment-status-4689" class="saic-comment-status"></div>
-
-		<ul id="saic-container-comment-4689" class="saic-container-comments saic-order-DESC saic-has-19-comments saic-multiple-comments" data-order="DESC"></ul>
-
-		<div class="saic-holder-4689 saic-holder"></div>
-
-	</div>
-
-</div>
-</div>				</div>
 				</div>
 				</div>
 				</div>
@@ -1268,12 +1357,12 @@ var WdsAudio = {"source":"url","audio_link":"https:\/\/data.kekondangan.app\/Mus
 		
 			<div class="elementor-icon-wrapper" id="wds_audio_play">
 				<div class="elementor-icon">
-				<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><defs><style>.fa-secondary{opacity:.4}</style></defs><path class="fa-primary" d="M416 448c53 0 96-35.8 96-80s-43-80-96-80s-96 35.8-96 80s43 80 96 80zM96 512c53 0 96-35.8 96-80s-43-80-96-80s-96 35.8-96 80s43 80 96 80z"></path><path class="fa-secondary" d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0-34.8-26.7-64.5-64-75.4V147L192 223.8V432c0-34.8-26.7-64.5-64-75.4V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z"></path></svg>				</div>
+				<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><defs><style>.fa-secondary{opacity:.4}</div></defs><path class="fa-primary" d="M416 448c53 0 96-35.8 96-80s-43-80-96-80s-96 35.8-96 80s43 80 96 80zM96 512c53 0 96-35.8 96-80s-43-80-96-80s-96 35.8-96 80s43 80 96 80z"></path><path class="fa-secondary" d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0-34.8-26.7-64.5-64-75.4V147L192 223.8V432c0-34.8-26.7-64.5-64-75.4V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z"></path></svg>				</div>
 			</div> 
 
 			<div class="elementor-icon-wrapper" id="wds_audio_pause">
 				<div class="elementor-icon">
-				<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 640 512"><defs><style>.fa-secondary{opacity:.4}</style></defs><path class="fa-primary" d="M5.1 9.2C13.3-1.2 28.4-3.1 38.8 5.1l592 464c10.4 8.2 12.3 23.3 4.1 33.7s-23.3 12.3-33.7 4.1L9.2 42.9C-1.2 34.7-3.1 19.6 5.1 9.2z"></path><path class="fa-secondary" d="M563.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 16.7-6.2 32.2-16.7 45.1L421.2 304.8C437.4 294.3 457.8 288 480 288c11.2 0 22 1.6 32 4.6V147L300.7 210.4 192.1 125.3c1.1-13 10-24.1 22.7-27.9l320-96c9.7-2.9 20.2-1.1 28.3 5zM192 247.3l64 50.4V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V247.3z"></path></svg>				</div>
+				<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 640 512"><defs><style>.fa-secondary{opacity:.4}</div></defs><path class="fa-primary" d="M5.1 9.2C13.3-1.2 28.4-3.1 38.8 5.1l592 464c10.4 8.2 12.3 23.3 4.1 33.7s-23.3 12.3-33.7 4.1L9.2 42.9C-1.2 34.7-3.1 19.6 5.1 9.2z"></path><path class="fa-secondary" d="M563.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 16.7-6.2 32.2-16.7 45.1L421.2 304.8C437.4 294.3 457.8 288 480 288c11.2 0 22 1.6 32 4.6V147L300.7 210.4 192.1 125.3c1.1-13 10-24.1 22.7-27.9l320-96c9.7-2.9 20.2-1.1 28.3 5zM192 247.3l64 50.4V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V247.3z"></path></svg>				</div>
 			</div>
 
 			<div id="wds-audio-box" style="display:none !important;">
