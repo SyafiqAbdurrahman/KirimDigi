@@ -1157,71 +1157,84 @@ continually, You.</p>				</div>
 					</div>
 					<script>
 					document.addEventListener('DOMContentLoaded', function() {
+						const storageKey = 'weddingWishes_SofwaSyafiq_02';
 						const rsvpForm = document.getElementById('rsvp-form');
 						const wishesList = document.getElementById('wishes-list');
 						const wishesCount = document.getElementById('wishes-count');
 						const toggleButton = document.getElementById('toggle-wishes');
-						
-						function formatTimestamp(date) {
+
+						if (!rsvpForm || !wishesList || !wishesCount || !toggleButton) {
+							console.error('Satu atau lebih elemen RSVP tidak ditemukan. Skrip dihentikan.');
+							return;
+						}
+
+						let wishesData = [];
+
+						function loadWishes() {
+							const storedWishes = localStorage.getItem(storageKey);
+							if (storedWishes) {
+								try {
+									const parsedData = JSON.parse(storedWishes);
+									wishesData = Array.isArray(parsedData) ? parsedData : getDefaultWishes();
+								} catch (e) {
+									console.error("Gagal memuat data ucapan, menggunakan data default.", e);
+									wishesData = getDefaultWishes();
+								}
+							} else {
+								wishesData = getDefaultWishes();
+							}
+							saveWishes();
+						}
+
+						function saveWishes() {
+							localStorage.setItem(storageKey, JSON.stringify(wishesData));
+						}
+
+						function getDefaultWishes() {
+							return [
+								{ name: 'Budi & Keluarga', text: 'Selamat menempuh hidup baru Sofwa & Syafiq! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Aamiin.', attendance: 'hadir', timestamp: new Date('2024-07-20T10:00:00').toISOString() },
+								{ name: 'Ani', text: 'Happy wedding! Bahagia selalu untuk kalian berdua. Semoga langgeng sampai kakek nenek.', attendance: 'ragu', timestamp: new Date('2024-07-21T11:30:00').toISOString() }
+							];
+						}
+
+						function formatTimestamp(dateString) {
+							const date = new Date(dateString);
 							const options = { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' };
 							return new Intl.DateTimeFormat('id-ID', options).format(date).replace(/\./g, ':');
 						}
-
-						const wishesData = [
-							{ name: 'Budi & Keluarga', text: 'Selamat menempuh hidup baru Sofwa & Syafiq! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Aamiin.', attendance: 'hadir', timestamp: new Date('2024-07-20T10:00:00') },
-							{ name: 'Ani', text: 'Happy wedding! Bahagia selalu untuk kalian berdua. Semoga langgeng sampai kakek nenek.', attendance: 'ragu', timestamp: new Date('2024-07-21T11:30:00') },
-							{ name: 'Doni', text: 'Mohon maaf tidak bisa hadir, semoga acaranya lancar.', attendance: 'tidak-hadir', timestamp: new Date('2024-07-21T15:00:00') },
-							{ name: 'Citra', text: 'Selamat ya, semoga cepat diberi momongan yang lucu-lucu. Aamiin ya Rabbal Alamin.', attendance: 'hadir', timestamp: new Date('2024-07-22T09:15:00') }
-						];
-
-						function addWishToList(wish) {
-							const newWishLi = document.createElement('li');
-							
-							const authorDiv = document.createElement('div');
-							authorDiv.className = 'wish-author';
-							authorDiv.textContent = wish.name;
-
-							const metaDiv = document.createElement('div');
-							metaDiv.className = 'wish-meta';
-
-							const attendanceSpan = document.createElement('span');
-							attendanceSpan.className = `wish-attendance ${wish.attendance}`;
-							let attendanceText = wish.attendance;
-							if (attendanceText === 'ragu') {
-								attendanceText = 'Masih Ragu';
-							}
-							attendanceSpan.textContent = attendanceText;
-							
-							const timestampSpan = document.createElement('span');
-							timestampSpan.className = 'wish-timestamp';
-							timestampSpan.textContent = formatTimestamp(wish.timestamp);
-
-							metaDiv.appendChild(attendanceSpan);
-							metaDiv.appendChild(timestampSpan);
-
-							const textDiv = document.createElement('div');
-							textDiv.className = 'wish-text';
-							textDiv.textContent = wish.text;
-
-							newWishLi.appendChild(authorDiv);
-							newWishLi.appendChild(metaDiv);
-							newWishLi.appendChild(textDiv);
-
-							wishesList.prepend(newWishLi);
+						
+						function sanitizeHTML(str) {
+							const temp = document.createElement('div');
+							temp.textContent = str;
+							return temp.innerHTML;
 						}
 
-						function updateWishesCount() {
-							 const count = wishesData.filter(w => w.attendance !== 'tidak-hadir').length;
-							 wishesCount.textContent = count;
-						}
+						function renderWishes() {
+							const visibleWishes = wishesData
+								.filter(w => w.attendance !== 'tidak-hadir')
+								.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
-						// Initial population of the list
-						wishesData.forEach(wish => {
-							if (wish.attendance !== 'tidak-hadir') {
-								addWishToList(wish);
+							wishesCount.textContent = visibleWishes.length;
+							wishesList.innerHTML = '';
+
+							if (visibleWishes.length === 0) {
+								wishesList.innerHTML = '<li style="text-align: center; color: #ccc; font-style: italic;">Belum ada ucapan dari tamu yang akan hadir.</li>';
+							} else {
+								visibleWishes.forEach(wish => {
+									const newWishLi = document.createElement('li');
+									const attendanceText = wish.attendance === 'ragu' ? 'Masih Ragu' : wish.attendance;
+									newWishLi.innerHTML = `
+										<div class="wish-author">${wish.name}</div>
+										<div class="wish-meta">
+											<span class="wish-attendance ${wish.attendance}">${attendanceText}</span>
+											<span class="wish-timestamp">${formatTimestamp(wish.timestamp)}</span>
+										</div>
+										<div class="wish-text">${wish.text}</div>
+									`;
+									wishesList.appendChild(newWishLi);
+								});
 							}
-						});
-						updateWishesCount();
+						}
 
 						rsvpForm.addEventListener('submit', function(e) {
 							e.preventDefault();
@@ -1229,37 +1242,29 @@ continually, You.</p>				</div>
 							const attendanceInput = document.getElementById('attendance-status');
 							const wishesInput = document.getElementById('wishes-text');
 
-							if (nameInput.value.trim() === '' || attendanceInput.value === '' || wishesInput.value.trim() === '') {
+							if (!nameInput.value.trim() || !attendanceInput.value || !wishesInput.value.trim()) {
 								alert('Mohon lengkapi semua kolom.');
 								return;
 							}
 
 							const newWish = {
-								name: nameInput.value,
-								text: wishesInput.value,
+								name: sanitizeHTML(nameInput.value),
+								text: sanitizeHTML(wishesInput.value),
 								attendance: attendanceInput.value,
-								timestamp: new Date()
+								timestamp: new Date().toISOString()
 							};
 
 							wishesData.push(newWish);
+							saveWishes();
 							
-							if (newWish.attendance !== 'tidak-hadir') {
-								addWishToList(newWish);
-								alert('Terima kasih! Ucapan dan doa Anda telah kami terima.');
-							} else {
-								alert('Terima kasih atas konfirmasi kehadiran Anda.');
-							}
-							
-							updateWishesCount();
+							alert('Terima kasih! Ucapan dan doa Anda telah kami terima.');
 							rsvpForm.reset();
+							
+							renderWishes();
 
-							if (wishesList.style.display === 'none' && newWish.attendance !== 'tidak-hadir') {
+							if (wishesList.style.display === 'none') {
 								wishesList.style.display = 'block';
 								toggleButton.textContent = 'Sembunyikan';
-							}
-							
-							if (newWish.attendance !== 'tidak-hadir') {
-								wishesList.scrollTop = 0;
 							}
 						});
 
@@ -1268,6 +1273,10 @@ continually, You.</p>				</div>
 							wishesList.style.display = isHidden ? 'block' : 'none';
 							toggleButton.textContent = isHidden ? 'Sembunyikan' : 'Tampilkan';
 						});
+
+						// --- Inisialisasi ---
+						loadWishes();
+						renderWishes();
 					});
 					</script>
 				</div>
@@ -1562,7 +1571,7 @@ Bpk/ibu/Saudara/i</h2>				</div>
 					<div class="e-con-inner">
 				<div class="elementor-element elementor-element-1321f46 elementor-widget elementor-widget-text-editor" data-id="1321f46" data-element_type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-									Made with ❤️Website Undangan Express								</div>
+									Made with ❤️Website KirimDigi								</div>
 				</div>
 				<div class="elementor-element elementor-element-0e1e4d1 elementor-widget elementor-widget-html" data-id="0e1e4d1" data-element_type="widget" data-widget_type="html.default">
 				<div class="elementor-widget-container">
